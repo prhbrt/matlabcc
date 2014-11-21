@@ -1,0 +1,6 @@
+#!/bin/bash 
+
+DIR=/usr/include/ 
+
+sudo cp -f matlabcc.h $DIR
+
