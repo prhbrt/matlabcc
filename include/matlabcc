@@ -1,0 +1,30 @@
+// author: Herbert Kruitbosch
+// CC: be nice.
+#ifndef INCLUDE_MATLABCC_H
+#define INCLUDE_MATLABCC_H
+
+#include <matrix.h>
+#include <mex.h>
+
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <algorithm>
+#include <functional>
+#include <cmath>
+
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <execinfo.h>
+#include <cxxabi.h>
+
+#include <matlabcci/stacktrace.h>
+#include <matlabcci/error.h>
+#include <matlabcci/create.h>
+#include <matlabcci/check.h>
+#include <matlabcci/access.h>
+#include <matlabcci/mat.h>
+#include <matlabcci/foreach.h>
+
+#endif

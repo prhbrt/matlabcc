@@ -2,5 +2,5 @@
 
 DIR=/usr/include/ 
 
-sudo cp -f matlabcc.h $DIR
+sudo cp -rf include/* $DIR
 

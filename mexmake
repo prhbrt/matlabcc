@@ -1,0 +1,12 @@
+#!/bin/bash
+
+EXAMPLES="./examples"
+LIB="./include"
+MEX="mex"
+CXXFLAGS="-Wall -std=c++11 -fPIC -g -O2"
+OUT="./bin"
+
+for i in $EXAMPLES/*.cpp; do
+#  mex CXXFLAGS="$CXXFLAGS -I$LIB" $i -outdir $OUT
+  mex CXXFLAGS="$CXXFLAGS" $i -outdir $OUT
+done
