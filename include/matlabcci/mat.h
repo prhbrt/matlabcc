@@ -37,6 +37,7 @@ public:
   }
   
   inline size_t dims() const { return d_ndims; }
+  inline size_t numel() const { return d_numel; }
   
   template<typename... Args>
   inline T &operator()(size_t first, Args... indices) { return normalat<0>(1, 0, first, indices...); }
@@ -136,9 +137,5 @@ private:
   }
 };
 }
-
-#include "create.h"
-
-#include "foreach.h"
 
 #endif

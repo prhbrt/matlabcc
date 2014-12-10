@@ -3,6 +3,7 @@
 
 namespace stck {
 
+/*
 std::string getstackframe(char *frame, size_t &offset) {
   std::string fr(frame);
   size_t loc0 = fr.find("+");
@@ -11,7 +12,6 @@ std::string getstackframe(char *frame, size_t &offset) {
   std::stringstream ss;
   
   fr.substr(loc1 + 1, loc2 - loc1 - 1) >> offset;
-  std::cout << "AA" << offset << "\n";
   ss << "addr2line -e " << fr.substr(0, loc0) << " -pfC " << fr.substr(loc1 + 1, loc2 - loc1 - 1);
   
   FILE* pipe = popen(ss.str().c_str(), "r");
@@ -24,7 +24,7 @@ std::string getstackframe(char *frame, size_t &offset) {
   
   pclose(pipe);
   return result.str();
-}
+} */
 
 class stacktrace_t {};
 
@@ -43,10 +43,10 @@ std::ostream &operator<<(std::ostream &out, stacktrace_t) {
   }
   
   char **symbols = backtrace_symbols(stackframes, numel);
-  for(size_t i = 0; i < numel; ++i)
-    out << getstackframe(symbols[i]);
+  //for(size_t i = 0; i < numel; ++i)
+  //  out << getstackframe(symbols[i]);
   
-  out << '\n';
+  //out << '\n';
   
   for(size_t i = 0; i < numel; ++i)
     out << symbols[i] << '\n';

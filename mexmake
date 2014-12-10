@@ -1,12 +1,14 @@
 #!/bin/bash
 
-EXAMPLES="./examples"
-LIB="./include"
-MEX="mex"
-CXXFLAGS="-Wall -std=c++11 -fPIC -g -O2"
-OUT="./bin"
+source ./config
 
 for i in $EXAMPLES/*.cpp; do
 #  mex CXXFLAGS="$CXXFLAGS -I$LIB" $i -outdir $OUT
-  mex CXXFLAGS="$CXXFLAGS" $i -outdir $OUT
+#  mex CXXFLAGS="$CXXFLAGS" $i -outdir $OUT
+  BASE=${i:${#EXAMPLES}:-4}
+  # echo $OUT/$BASE.mexa64
+  # echo $i
+  if [ $i -nt $OUT/$BASE.mexa64 ]; then
+    mex CXXFLAGS="$CXXFLAGS" $i -outdir $OUT
+  fi
 done

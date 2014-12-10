@@ -132,6 +132,28 @@ inline void forKernel(Mat<T> &matrix, size_t row, size_t col, Mat<K> &kernel, si
     f(kernel(r, c), row - center_row + r, col - center_col + c);
 }
 
+template<size_t n, typename L>
+staticfor(L f) {
+  for (size_t i = 0; i != n; ++i)
+    f(i);
+}
+
+template<typename T>
+inline T meanKernel(T *means, Mat<T> &matrix, size_t row, size_t col, Mat<T> &kernel, size_t center_row, size_t center_col) {
+  for (size_t channel = 0; channel < matrix.size(2); ++channel)
+    means[channel] = 0;
+  
+  double sum = 0;
+  mtb::forKernel(matrix, row, col, kernel, center_row, center_col, [&](T kv, size_t row, size_t col) {
+    for (size_t channel = 0; channel < matrix.size(2); ++channel)
+      means[channel] += kv * matrix(row, col, channel);
+    sum += kv;
+  });
+  
+  for (size_t channel = 0; channel < matrix.size(2); ++channel)
+    means[channel] /= sum;
+  return sum;
+}
 
 }
 #endif

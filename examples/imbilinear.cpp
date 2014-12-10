@@ -22,11 +22,12 @@ void mexFunction(int nargout, mxArray *argout[], int nargin, const mxArray *argi
   mtb::Mat<double> rowindices(argin[1]);
   mtb::Mat<double> colindices(argin[2]);
   
-  argout[0] = mtb::create<2, double, false>(rowindices.size(0), rowindices.size(1));
+  argout[0] = mtb::create<3, double, false>(rowindices.size(0), rowindices.size(1), matrix.size(2));
   mtb::Mat<double> out(argout[0]);
   
-  mtb::forEachElement<2> (rowindices, [&out, &rowindices, &colindices, &matrix](size_t row, size_t col) {
-    out(row, col) = matrix.val(rowindices(row, col), colindices(row, col));
+  mtb::forEachElement<2> (rowindices, [&](size_t row, size_t col) {
+    for (size_t channel = 0; channel < matrix.size(2); ++channel)
+      out(row, col, channel) = matrix.val(rowindices(row, col), colindices(row, col), channel);
   });
 }
 
