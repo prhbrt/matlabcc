@@ -3,4 +3,5 @@
 DIR=/usr/include/ 
 
 sudo cp -rf include/* $DIR
-
+sudo chmod 755 /usr/include/matlabcci
+sudo chmod 644 /usr/include/matlabcc /usr/include/matlabcci/*
