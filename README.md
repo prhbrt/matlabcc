@@ -30,6 +30,8 @@ Warning: I am not an expert.
 
 ## EXAMPLE:
 
+
+``` c++11
     //Consider this to be the mexFunction definition:
     void mexFunction(int nargout, mxArray *argout[], int nargin, const mxArray *argin[]) ...
 
@@ -118,3 +120,4 @@ Warning: I am not an expert.
         });
     }
     }
+```
