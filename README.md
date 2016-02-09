@@ -1,16 +1,16 @@
-STATUS
+## STATUS
 
 EXPERIMENTAL: If you use this, be prepared to be dissapointed.
 
-INSTALL
+## INSTALL
 
 Just run install to install the header file in /usr/include
 
-USAGE
+## USAGE
 
 include the header file like this:
 
-#include <matlabcc.h>
+    #include <matlabcc.h>
 
 That's all, everything is in this header file.
 
@@ -18,7 +18,7 @@ COMPILE:
 
 Comple your mex-files like so:
 
-mex CXXFLAGS="-Wall -std=c++11 -fPIC -O2" file.cpp
+    mex CXXFLAGS="-Wall -std=c++11 -fPIC -O2" file.cpp
 
 Make sure the extension is .cpp, otherwise mex uses gcc instead of g++ (I think).
 -O2 is particularly important for optimization of using lambda-functions. They are,
